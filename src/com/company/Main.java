@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         double jerk = 3;
         double initAccel = 0;
-        Function accelration = new Function(new double[]{
+        Function accelration = LinAlgLib.createFunction(new double[]{
                 jerk, initAccel
         });
         accelration.print();
