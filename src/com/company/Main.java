@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.structures.Function;
+
 public class Main {
     public static void main(String[] args) {
         double jerk = 3;
