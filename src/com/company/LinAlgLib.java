@@ -1,3 +1,5 @@
+package com.company;
+
 import com.company.structures.*;
 
 public class LinAlgLib {

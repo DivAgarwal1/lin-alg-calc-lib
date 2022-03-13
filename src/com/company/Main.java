@@ -1,7 +1,4 @@
-import com.company.structures.Derivative;
-import com.company.structures.Function;
-import com.company.structures.Matrix;
-import com.company.structures.MatrixInputMismatchException;
+package com.company;
 
 public class Main {
     public static void main(String[] args) {
