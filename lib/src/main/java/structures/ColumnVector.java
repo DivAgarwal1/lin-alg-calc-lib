@@ -1,4 +1,4 @@
-package com.company.structures;
+package structures;
 
 public class ColumnVector extends Matrix {
 

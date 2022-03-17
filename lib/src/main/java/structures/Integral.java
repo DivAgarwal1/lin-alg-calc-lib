@@ -1,4 +1,4 @@
-package com.company.structures;
+package structures;
 
 public class Integral extends Matrix {
     public Integral(int len) {

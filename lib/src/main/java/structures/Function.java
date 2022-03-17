@@ -1,4 +1,4 @@
-package com.company.structures;
+package structures;
 
 public class Function extends ColumnVector {
     public Function() {

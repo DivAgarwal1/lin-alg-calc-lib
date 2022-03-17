@@ -1,4 +1,4 @@
-package com.company.structures;
+package structures;
 
 public class Derivative extends Matrix {
     public Derivative(int len) {
