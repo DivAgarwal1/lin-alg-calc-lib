@@ -1,4 +1,4 @@
-package structures;
+package lin.alg.lib.structures;
 
 public class Matrix {
     private double[][] matrix;
@@ -115,8 +115,8 @@ public class Matrix {
         return sum;
     }
 
-    public Matrix getInverse() throws NoInverseExcpetion, MatrixDimesionException {
-        if (!isSquare()) throw new NoInverseExcpetion();
+    public Matrix getInverse() throws NoInverseException, MatrixDimesionException {
+        if (!isSquare()) throw new NoInverseException();
 
         //Matrix of Minors
         Matrix matrixOfMinors = new Matrix(getRows(), getColumns());
@@ -161,7 +161,7 @@ public class Matrix {
         }
 
         //Determinant
-        if (getDeterminant() == 0) throw new NoInverseExcpetion();
+        if (getDeterminant() == 0) throw new NoInverseException();
         return Matrix.multiply(1./getDeterminant(), adjugated);
     }
 }

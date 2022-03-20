@@ -1,4 +1,6 @@
-package structures;
+package lin.alg.lib.structures;
+
+import lin.alg.lib.LinAlgLib;
 
 public class Function extends ColumnVector {
     public Function() {
@@ -23,6 +25,25 @@ public class Function extends ColumnVector {
             total += get(i) * Math.pow(x, i);
         }
         return total;
+    }
+
+    /** maxRepetitions - how many times you want to run a Newton's method iteration (even 1 will usually suffice) */
+    public double solve(double guess, int maxRepetitions) {
+        double x = guess;
+        for (int i = 0; i < maxRepetitions; i++) {
+            x = solve(0, x);
+        }
+        return x;
+    }
+
+    private double solve(int count, double x) {
+        if (count > 7000) {
+            return x;
+        }
+
+        Function derivative = LinAlgLib.takeDerivative(this);
+        double x1 = x - compute(x)/derivative.compute(x);
+        return solve(count + 1, x1);
     }
 
     @Override

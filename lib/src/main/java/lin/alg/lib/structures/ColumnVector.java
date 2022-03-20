@@ -1,4 +1,4 @@
-package structures;
+package lin.alg.lib.structures;
 
 public class ColumnVector extends Matrix {
 

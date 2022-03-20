@@ -1,4 +1,4 @@
-package structures;
+package lin.alg.lib.structures;
 
 public class Derivative extends Matrix {
     public Derivative(int len) {

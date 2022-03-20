@@ -1,6 +1,6 @@
-package linalgcalclib;
+package lin.alg.lib;
 
-import structures.*;
+import lin.alg.lib.structures.*;
 
 public class LinAlgLib {
     public static Function createFunction(double[] function) {
@@ -20,6 +20,7 @@ public class LinAlgLib {
     }
 
     public static Function takeDerivative(Function function) {
+        if (function.getRows() <= 1) return LinAlgLib.createFunction(new int[]{0});
         Derivative derivative = new Derivative(function.getRows());
         Matrix matrix = new Matrix(new double[][]{});
         try {
