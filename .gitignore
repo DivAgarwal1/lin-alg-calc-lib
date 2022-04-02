@@ -7,3 +7,5 @@ build
 .idea
 
 *.iml
+
+lib/src/main/java/lin/alg/lib/Main.java

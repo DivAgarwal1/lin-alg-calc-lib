@@ -1,34 +1,21 @@
 package lin.alg.lib.structures;
 
-import lin.alg.lib.LinAlgLib;
-
-public class Function extends ColumnVector {
-    public Function() {
-        super(new double[]{});
-    }
-
-    public Function(int len) {
-        super(len);
-    }
-
-    public Function(double[] function) {
-        super(function);
-    }
-
-    public Function(int[] function) {
-        super(function);
-    }
+public abstract class Function {
+    private Function derivative;
 
     public double compute(double x) {
-        double total = 0;
-        for (int i = 0; i < getRows(); i++) {
-            total += get(i) * Math.pow(x, i);
-        }
-        return total;
+        return 0;
+    };
+
+    public final void manuallySetDerivative(Function derivative) {
+        this.derivative = derivative;
     }
 
-    /** maxRepetitions - how many times you want to run a Newton's method iteration (even 1 will usually suffice) */
-    public double solve(double guess, int maxRepetitions) {
+    public final Function getManuallySetDerivative() {
+        return derivative;
+    }
+
+    public final double solve(double guess, double maxRepetitions) {
         double x = guess;
         for (int i = 0; i < maxRepetitions; i++) {
             x = solve(0, x);
@@ -41,19 +28,15 @@ public class Function extends ColumnVector {
             return x;
         }
 
-        Function derivative = LinAlgLib.takeDerivative(this);
-        double x1 = x - compute(x)/derivative.compute(x);
+        double x1 = x - compute(x)/calculateDerivativeAtPoint(x);
         return solve(count + 1, x1);
     }
 
-    @Override
-    public void print() {
-        System.out.println("--------------------");
-        double[] temp = new double[getRows()];
-        for (int i = 0; i < getRows(); i++) {
-            if (i == getRows() - 1) System.out.print("" + get(getRows() - i - 1) + " * x^" + (getRows() - i - 1) + "\n");
-            else System.out.print("" + get(getRows() - i - 1) + " * x^" + (getRows() - i - 1) + "   +   ");
+    public final double calculateDerivativeAtPoint(double x) {
+        if (derivative != null) {
+            return derivative.compute(x);
         }
-        System.out.println("--------------------");
+
+        return (compute(x + 0.0000000001) - compute(x)) / 0.0000000001;
     }
 }
