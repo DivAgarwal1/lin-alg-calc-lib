@@ -55,7 +55,7 @@ public abstract class Function {
         }
 
         double num = (b-a)/2.;
-        int sum = 0;
+        double sum = 0;
         double[][] quadratureCoefficients = quadratureCoefficients(17);
         for (int i = 0; i < quadratureCoefficients.length; i++) {
             sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + num);
@@ -65,7 +65,7 @@ public abstract class Function {
 
     public final double definiteIntegralCustomGaussianQuadrature(int a, int b, int n) {
         double num = (b-a)/2.;
-        int sum = 0;
+        double sum = 0;
         double[][] quadratureCoefficients = quadratureCoefficients(n);
         for (int i = 0; i < quadratureCoefficients.length; i++) {
             sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + num);
