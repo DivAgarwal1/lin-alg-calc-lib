@@ -58,7 +58,7 @@ public abstract class Function {
         double sum = 0;
         double[][] quadratureCoefficients = quadratureCoefficients(17);
         for (int i = 0; i < quadratureCoefficients.length; i++) {
-            sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + (a+b)/2);
+            sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + (a+b)/2.);
         }
         return num*sum;
     }
@@ -68,7 +68,7 @@ public abstract class Function {
         double sum = 0;
         double[][] quadratureCoefficients = quadratureCoefficients(n);
         for (int i = 0; i < quadratureCoefficients.length; i++) {
-            sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + num);
+            sum += quadratureCoefficients[i][0] * compute(num*quadratureCoefficients[i][1] + (a+b)/2.);
         }
         return num*sum;
     }
