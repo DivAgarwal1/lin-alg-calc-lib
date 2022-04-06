@@ -1,6 +1,8 @@
 package lin.alg.lib.structures;
 
-public class Matrix {
+import java.io.Serializable;
+
+public class Matrix implements Serializable {
     private double[][] matrix;
 
     public Matrix(int x, int y) {
