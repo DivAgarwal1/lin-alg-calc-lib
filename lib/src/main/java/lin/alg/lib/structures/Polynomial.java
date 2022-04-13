@@ -27,7 +27,7 @@ public class Polynomial extends ColumnVector {
         return total;
     }
 
-    /** maxRepetitions - how many times you want to run a Newton's method iteration (even 1 will usually suffice) */
+    // maxRepetitions - how many times you want to run a Newton's method iteration (even 1 will usually suffice)
     public double solve(double guess, int maxRepetitions) {
         double x = guess;
         for (int i = 0; i < maxRepetitions; i++) {

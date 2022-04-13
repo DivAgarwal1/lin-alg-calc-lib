@@ -54,8 +54,8 @@ public class Matrix implements Serializable {
         System.out.println("----------------------------------------------------------------------------------------------------");
     }
 
-    public static Matrix add(Matrix m1, Matrix m2) throws MatrixDimesionException {
-        if (!(m1.getRows() == m2.getRows() && m1.getColumns() == m2.getColumns())) throw new MatrixDimesionException();
+    public static Matrix add(Matrix m1, Matrix m2) throws MatrixDimensionException {
+        if (!(m1.getRows() == m2.getRows() && m1.getColumns() == m2.getColumns())) throw new MatrixDimensionException();
         else {
             Matrix returnM = new Matrix(m1.getRows(), m2.getColumns());
             for (int i = 0; i < m1.getRows(); i++) {
@@ -76,8 +76,8 @@ public class Matrix implements Serializable {
         return matrix;
     }
 
-    public static Matrix multiply(Matrix m1, Matrix m2) throws MatrixDimesionException {
-        if (m1.getColumns() != m2.getRows()) throw new MatrixDimesionException();
+    public static Matrix multiply(Matrix m1, Matrix m2) throws MatrixDimensionException {
+        if (m1.getColumns() != m2.getRows()) throw new MatrixDimensionException();
         else {
             Matrix returnM = new Matrix(m1.getRows(), m2.getColumns());
             double val1, val2, sum;
@@ -95,10 +95,10 @@ public class Matrix implements Serializable {
         }
     }
 
-    public double getDeterminant() throws MatrixDimesionException {
+    public double getDeterminant() throws MatrixDimensionException {
         if (getColumns() == 2 && getRows() == 2) return get(0, 0) * get(1, 1) - get(0, 1) * get(1, 0);
 
-        if (!isSquare()) throw new MatrixDimesionException();
+        if (!isSquare()) throw new MatrixDimensionException();
 
         Matrix subMatrix = new Matrix(getRows() - 1, getColumns() - 1);
         int index;
@@ -117,7 +117,7 @@ public class Matrix implements Serializable {
         return sum;
     }
 
-    public Matrix getInverse() throws NoInverseException, MatrixDimesionException {
+    public Matrix getInverse() throws NoInverseException, MatrixDimensionException {
         if (!isSquare()) throw new NoInverseException();
 
         //Matrix of Minors

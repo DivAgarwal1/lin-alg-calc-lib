@@ -3,29 +3,29 @@ package lin.alg.lib;
 import lin.alg.lib.structures.*;
 
 public class LinAlgLib {
-    public static Polynomial createFunction(double[] function) {
-        double[] temp = new double[function.length];
-        for (int i = 0; i < function.length; i++) {
-            temp[i] = function[function.length - i - 1];
+    public static Polynomial createPolynomial(double[] coefficients) {
+        double[] temp = new double[coefficients.length];
+        for (int i = 0; i < coefficients.length; i++) {
+            temp[i] = coefficients[coefficients.length - i - 1];
         }
         return new Polynomial(temp);
     }
 
-    public static Polynomial createFunction(int[] function) {
-        int[] temp = new int[function.length];
-        for (int i = 0; i < function.length; i++) {
-            temp[i] = function[function.length - i - 1];
+    public static Polynomial createPolynomial(int[] coefficients) {
+        int[] temp = new int[coefficients.length];
+        for (int i = 0; i < coefficients.length; i++) {
+            temp[i] = coefficients[coefficients.length - i - 1];
         }
         return new Polynomial(temp);
     }
 
     public static Polynomial takeDerivative(Polynomial polynomial) {
-        if (polynomial.getRows() <= 1) return LinAlgLib.createFunction(new int[]{0});
+        if (polynomial.getRows() <= 1) return LinAlgLib.createPolynomial(new int[]{0});
         Derivative derivative = new Derivative(polynomial.getRows());
         Matrix matrix = new Matrix(new double[][]{});
         try {
             matrix =  Matrix.multiply(derivative, polynomial);
-        } catch (MatrixDimesionException e) {
+        } catch (MatrixDimensionException e) {
             e.printStackTrace();
         }
 
@@ -41,7 +41,7 @@ public class LinAlgLib {
         Matrix matrix = new Matrix(new double[][]{});
         try {
             matrix =  Matrix.multiply(integral, polynomial);
-        } catch (MatrixDimesionException e) {
+        } catch (MatrixDimensionException e) {
             e.printStackTrace();
         }
 
@@ -87,6 +87,7 @@ public class LinAlgLib {
     public static Polynomial cosine() {
         return cosine(100);
     }
+
     public static Polynomial sine(double amplitude, double frequency, int terms) {
         double[] coefficients = new double[2*terms];
         int sign;
@@ -116,5 +117,35 @@ public class LinAlgLib {
             sum *= i;
         }
         return sum;
+    }
+
+    public static double takeArcsin(double x) {
+        Function derivative = new Function() {
+            @Override
+            public double compute(double x) {
+                return 1./Math.sqrt(1. - x*x);
+            }
+        };
+        return derivative.definiteIntegral(0, x);
+    }
+
+    public static double takeArccos(double x) {
+        Function derivative = new Function() {
+            @Override
+            public double compute(double x) {
+                return -1./Math.sqrt(1. - x*x);
+            }
+        };
+        return derivative.definiteIntegral(0, x);
+    }
+
+    public static double takeArctan(double x) {
+        Function derivative = new Function() {
+            @Override
+            public double compute(double x) {
+                return 1./(1. + x*x);
+            }
+        };
+        return derivative.definiteIntegral(0, x);
     }
 }
