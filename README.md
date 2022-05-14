@@ -40,7 +40,7 @@ Polynomial function = LinAlgLib.createPolynomial(new double[] {
 //guess the root of the function or put in something random
 double guess = 2;
 
-// maxRepetitions - how many times you want to run a 7000 Newton's method iteration (even 1 will almost always suffice)
+// maxRepetitions - how many times you want to run a 7000 step Newton's method iteration (even 1 will almost always suffice)
 int maxRepetitions = 1;
 
 double oneRootOfFunction = function.solve(guess, maxRepetitions);
