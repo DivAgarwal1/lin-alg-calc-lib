@@ -99,7 +99,7 @@ Function function = new Function() {
 //guess the root of the function or put in something random
 double guess = 2;
 
-// maxRepetitions - how many times you want to run a Newton's method iteration (even 1 will usually suffice)
+// maxRepetitions - how many times you want to run a 7000 step Newton's method iteration (even 1 will almost always suffice)
 int maxRepetitions = 1;
 
 double oneRootOfFunction = function.solve(guess, maxRepetitions);
